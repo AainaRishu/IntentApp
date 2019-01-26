@@ -1,6 +1,7 @@
 package com.android.aaina.intentapp
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
@@ -15,6 +16,7 @@ class MainActivity:AppCompatActivity()
         b1.setOnClickListener{
             var i = Intent()
             i.action=Intent.ACTION_DIAL
+            i.data= Uri.parse("tel:"+et1.text.toString())
             startActivity(i)
 
         }
@@ -34,10 +36,16 @@ class MainActivity:AppCompatActivity()
 
 
         b2.setOnClickListener{
+            var i = Intent(this@MainActivity,
+                WelcomeActivity::class.java)
+            i.putExtra("name",et2.text.toString())
+            i.putExtra("qual",et3.text.toString())
+            startActivity(i)
 
         }
         b3.setOnClickListener{
-
+           var i=Intent()
+            i.action="com.whatsapp"
         }
     }
 }
