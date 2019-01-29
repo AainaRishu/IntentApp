@@ -54,5 +54,18 @@ class MainActivity:AppCompatActivity() {
                 startActivity(i)
             }
         }
+        b4.setOnClickListener {
+            val i = packageManager.getLaunchIntentForPackage("in.swiggy.android")
+            if(i!=null){
+                startActivity(i)
+            }
+            else{
+                val i = Intent()
+                i.action = Intent.ACTION_VIEW
+                i.data = Uri.parse("https://play.google.com/store/apps/details?id=in.swiggy.android")
+                startActivity(i)
+            }
+
+        }
     }
 }
